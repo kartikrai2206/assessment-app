@@ -2,12 +2,16 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "assess-first"
+        IMAGE_NAME = "assess-1"
         PROJECT_ID = "test-learning-project-494008"
         GCR_REPO = "gcr.io/${PROJECT_ID}/${IMAGE_NAME}"
         TAG = "${BUILD_NUMBER}"
 
         SONARQUBE_ENV = "SonarQube"
+    }
+
+    tools {
+        sonarQube 'Assess_Sonarqube_Scanner'
     }
 
     stages {
@@ -23,7 +27,7 @@ pipeline {
             steps {
                 withSonarQubeEnv("${SONARQUBE_ENV}") {
                     sh '''
-                    sonar-scanner \
+                    /opt/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
                     -Dsonar.projectKey=assess-first \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://34.14.181.26/sonar \
