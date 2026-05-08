@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "assess-first"
+        IMAGE_NAME = "assess-1"
         PROJECT_ID = "test-learning-project-494008"
         GCR_REPO = "gcr.io/${PROJECT_ID}/${IMAGE_NAME}"
         TAG = "${BUILD_NUMBER}"
