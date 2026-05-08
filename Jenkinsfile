@@ -10,10 +10,6 @@ pipeline {
         SONARQUBE_ENV = "SonarQube"
     }
 
-    tools {
-        sonarQube 'Assess_Sonarqube_Scanner'
-    }
-
     stages {
 
         stage('Pull Code from GitHub') {
@@ -27,7 +23,7 @@ pipeline {
             steps {
                 withSonarQubeEnv("${SONARQUBE_ENV}") {
                     sh '''
-                    /opt/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
+                    sonar-scanner \
                     -Dsonar.projectKey=assess-first \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://34.14.181.26/sonar \
