@@ -15,8 +15,8 @@ mkdir -p /opt/devops
 
 cd /opt/devops
 
-git clone https://github.com/your-username/devops-project.git
+git clone https://github.com/kartikrai2206/assessment-app.git
 
-cd devops-project/docker
+cd assessment-app/docker-poc
 
 docker compose up -d

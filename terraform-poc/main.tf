@@ -35,5 +35,5 @@ resource "google_compute_instance" "demo-poc-1" {
       access_config {}
     }
     metadata_startup_script = file("scripts/startup.sh")
-    tags = ["jenkins"]
+    tags = ["assess-poc-app"]
 }
