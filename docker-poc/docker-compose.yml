@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    image: nginx:latest
+
+    container_name: nginx
+
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
+    depends_on:
+      - jenkins
+      - sonarqube
+      - kibana
+
+  jenkins:
+    image: jenkins/jenkins:lts
+
+    container_name: jenkins
+
+    volumes:
+      - jenkins_data:/var/jenkins_home
+
+  sonarqube:
+    image: sonarqube:lts-community
+
+    container_name: sonarqube
+
+    environment:
+      SONAR_WEB_CONTEXT: /sonar
+
+  
+volumes:
+  jenkins_data:

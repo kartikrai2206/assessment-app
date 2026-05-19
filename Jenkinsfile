@@ -6,6 +6,7 @@ pipeline {
         PROJECT_ID = "test-learning-project-494008"
         GCR_REPO = "gcr.io/${PROJECT_ID}/${IMAGE_NAME}"
         TAG = "${BUILD_NUMBER}"
+        SONAR_HOST_IP = "34.14.181.26"
 
         SONARQUBE_ENV = "SonarQube"
     }
@@ -26,7 +27,7 @@ pipeline {
                     /opt/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
                     -Dsonar.projectKey=assess-first \
                     -Dsonar.sources=. \
-                    -Dsonar.host.url=http://34.14.181.26/sonar \
+                    -Dsonar.host.url=http://${SONAR_HOST_IP}/sonar \
                     -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
