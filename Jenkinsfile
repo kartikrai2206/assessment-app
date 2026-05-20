@@ -12,6 +12,7 @@ pipeline {
         SONAR_PROJECT_KEY = terraform-poc-1
 
         SONARQUBE_ENV = "SonarQube"
+        SONAR_TOKEN = credentials('sonar-token')
     }
 
     stages {
@@ -34,7 +35,7 @@ pipeline {
                     -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=${SONAR_HOST} \
-                    -Dsonar.login=$SONAR_AUTH_TOKEN
+                    -Dsonar.login=$SONAR_TOKEN
                     '''
                 }
             }  
