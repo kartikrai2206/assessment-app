@@ -8,7 +8,7 @@ pipeline {
         TAG = "${BUILD_NUMBER}"
         //SONAR_HOST_IP = "34.14.181.26"       //FOR TEST-INSTANCE
         
-        SONAR_HOST = "http://sonarqube:9000"
+        SONAR_HOST = "http://sonarqube:9000/sonar"
         // SONAR_PROJECT_KEY = terraform-poc-1
 
         SONARQUBE_ENV = "SonarQube"
