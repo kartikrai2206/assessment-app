@@ -26,7 +26,7 @@ pipeline {
 
         stage('Run Sonar Scan') {
             steps {
-                withSonarQubeEnv("${SONARQUBE_ENV}") {
+                
                     sh '''
                     docker run --rm \
                     --network docker-poc_default \
@@ -37,8 +37,8 @@ pipeline {
                     -Dsonar.host.url=${SONAR_HOST} \
                     -Dsonar.login=$SONAR_TOKEN
                     '''
-                }
-            }  
+            }
+            
         }
 
         
