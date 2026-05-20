@@ -6,7 +6,10 @@ pipeline {
         PROJECT_ID = "test-learning-project-494008"
         GCR_REPO = "gcr.io/${PROJECT_ID}/${IMAGE_NAME}"
         TAG = "${BUILD_NUMBER}"
-        SONAR_HOST_IP = "34.14.181.26"
+        //SONAR_HOST_IP = "34.14.181.26"       //FOR TEST-INSTANCE
+        
+        SONAR_HOST = "http://sonarqube:9000"
+        SONAR_PROJECT_KEY = terraform-poc-1
 
         SONARQUBE_ENV = "SonarQube"
     }
@@ -24,10 +27,13 @@ pipeline {
             steps {
                 withSonarQubeEnv("${SONARQUBE_ENV}") {
                     sh '''
-                    /opt/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
-                    -Dsonar.projectKey=assess-first \
+                    docker run --rm \
+                    --network docker_default \
+                    -v $(pwd):/usr/src \
+                    sonarsource/sonar-scanner-cli \
+                    -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                     -Dsonar.sources=. \
-                    -Dsonar.host.url=http://${SONAR_HOST_IP}/sonar \
+                    -Dsonar.host.url=${SONAR_HOST} \
                     -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
