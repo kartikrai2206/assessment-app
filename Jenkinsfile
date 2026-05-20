@@ -9,7 +9,7 @@ pipeline {
         //SONAR_HOST_IP = "34.14.181.26"       //FOR TEST-INSTANCE
         
         SONAR_HOST = "http://sonarqube:9000"
-        SONAR_PROJECT_KEY = terraform-poc-1
+        // SONAR_PROJECT_KEY = terraform-poc-1
 
         SONARQUBE_ENV = "SonarQube"
         SONAR_TOKEN = credentials('sonar-token')
@@ -32,7 +32,7 @@ pipeline {
                     --network docker_default \
                     -v $(pwd):/usr/src \
                     sonarsource/sonar-scanner-cli \
-                    -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+                    -Dsonar.projectKey=terraform-poc-1 \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=${SONAR_HOST} \
                     -Dsonar.login=$SONAR_TOKEN
