@@ -29,7 +29,7 @@ pipeline {
                 withSonarQubeEnv("${SONARQUBE_ENV}") {
                     sh '''
                     docker run --rm \
-                    --network docker_default \
+                    --network docker-poc_default \
                     -v $(pwd):/usr/src \
                     sonarsource/sonar-scanner-cli \
                     -Dsonar.projectKey=terraform-poc-1 \
