@@ -170,7 +170,7 @@ gcloud config set project PROJECT_ID
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/<your-repo>.git
+git clone https://github.com/kartikrai2206/assessment-app.git
 cd terraform
 ```
 
